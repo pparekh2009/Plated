@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feature_recipe_nav_graph"
+    app:startDestination="@id/detailsFragment">
+
+<!--    <fragment-->
+<!--        android:id="@+id/detailsFragment"-->
+<!--        android:name="com.priyanshparekh.feature.recipe.ui.DetailsFragment"-->
+<!--        android:label="DetailsFragment"-->
+<!--        tools:layout="@layout/fragment_details">-->
+<!--        <action-->
+<!--            android:id="@+id/action_detailsFragment_to_ingredientsFragment"-->
+<!--            app:destination="@id/ingredientsFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/ingredientsFragment"-->
+<!--        android:name="com.priyanshparekh.feature.recipe.ui.IngredientsFragment"-->
+<!--        android:label="IngredientsFragment"-->
+<!--        tools:layout="@layout/fragment_ingredients">-->
+<!--        <action-->
+<!--            android:id="@+id/action_ingredientsFragment_to_stepsFragment"-->
+<!--            app:destination="@id/stepsFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/stepsFragment"-->
+<!--        android:name="com.priyanshparekh.feature.recipe.ui.StepsFragment"-->
+<!--        android:label="StepsFragment"-->
+<!--        tools:layout="@layout/fragment_steps">-->
+<!--        <action-->
+<!--            android:id="@+id/action_stepsFragment_to_reviewFragment"-->
+<!--            app:destination="@id/reviewFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/reviewFragment"-->
+<!--        android:name="com.priyanshparekh.feature.recipe.ui.ReviewFragment"-->
+<!--        android:label="ReviewFragment"-->
+<!--        tools:layout="@layout/fragment_review"/>-->
+
+</navigation>

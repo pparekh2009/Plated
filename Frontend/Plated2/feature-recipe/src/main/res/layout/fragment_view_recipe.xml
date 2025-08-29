@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <ImageView
+        android:id="@+id/recipe_iv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/recipe_img"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="@dimen/_50sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <ImageView
+        android:id="@+id/btn_save"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:src="@drawable/round_bookmark_border_24"
+        android:background="@color/white"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@id/recipe_iv"
+        app:layout_constraintBottom_toBottomOf="@id/recipe_iv"/>
+
+    <TextView
+        android:id="@+id/recipe_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Spicy chicken burger with French Fries"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintEnd_toStartOf="@id/review_count"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/recipe_iv"/>
+
+    <TextView
+        android:id="@+id/review_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(13K Reviews)"
+        app:layout_constraintStart_toEndOf="@id/recipe_name"
+        app:layout_constraintTop_toTopOf="@id/recipe_name"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Laura Wilson"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/recipe_name" />
+
+    <ImageView
+        android:id="@+id/location_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_location_pin_24"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/username"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lagos, Nigeria"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/location_icon"
+        app:layout_constraintTop_toTopOf="@id/location_icon"
+        app:layout_constraintBottom_toBottomOf="@id/location_icon"/>
+
+    <Button
+        android:id="@+id/btn_follow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Follow"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_12sdp"
+        android:background="@drawable/btn_bg"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/username"
+        app:layout_constraintBottom_toBottomOf="@id/location"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/recipe_tabs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="#D85151"
+        app:tabBackground="@drawable/tab_selector"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/btn_follow"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/recipe_pages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/recipe_tabs"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

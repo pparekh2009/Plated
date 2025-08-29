@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/sign_up_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create an account"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/sign_up_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Let's help you set up your account,\nit won't take long"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_header"/>
+
+    <TextView
+        android:id="@+id/email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintStart_toStartOf="@id/input_email"
+        app:layout_constraintBottom_toTopOf="@id/input_email"/>
+
+    <EditText
+        android:id="@+id/input_email"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter Email"
+        android:textSize="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_tagline"/>
+
+    <TextView
+        android:id="@+id/password_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintStart_toStartOf="@id/input_password"
+        app:layout_constraintBottom_toTopOf="@id/input_password"/>
+
+    <EditText
+        android:id="@+id/input_password"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter Password"
+        android:textSize="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/input_email"/>
+
+    <TextView
+        android:id="@+id/confirm_password_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Password"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_8sdp"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintStart_toStartOf="@id/input_confirm_password"
+        app:layout_constraintBottom_toTopOf="@id/input_confirm_password"/>
+
+    <EditText
+        android:id="@+id/input_confirm_password"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Reenter Password"
+        android:textSize="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/input_password"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sign_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_bg"
+        app:layout_constraintBottom_toTopOf="@id/btn_sign_in"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/input_confirm_password"/>
+
+    <TextView
+        android:id="@+id/btn_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already a member? Sign In"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

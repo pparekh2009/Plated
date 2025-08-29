@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">FeatureRecipe</string>
+
+    <string-array name="cuisines">
+        <item>Burmese</item>
+        <item>Chinese</item>
+        <item>Ethiopian</item>
+        <item>French</item>
+        <item>Greek</item>
+        <item>Indian</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Lebanese</item>
+        <item>Mediterranean</item>
+        <item>Mexican</item>
+        <item>Russian</item>
+        <item>Thai</item>
+        <item>Vietnamese</item>
+    </string-array>
+
+    <string-array name="categories">
+        <item>Breakfast</item>
+        <item>Main Course</item>
+        <item>Side Dish</item>
+        <item>Snack</item>
+        <item>Dessert</item>
+        <item>Drink</item>
+        <item>Appetizer</item>
+        <item>Salad</item>
+        <item>Soup</item>
+    </string-array>
+
+    <string-array name="time_units">
+        <item>mins</item>
+        <item>hrs</item>
+    </string-array>
+
+    <string-array name="ingredient_units">
+        <item>grams</item>
+        <item>kilograms</item>
+        <item>milligrams</item>
+        <item>ounces</item>
+        <item>pounds</item>
+        <item>millilitres</item>
+        <item>litres</item>
+        <item>teaspoon</item>
+        <item>tablespoon</item>
+        <item>cup</item>
+        <item>pint</item>
+        <item>quart</item>
+        <item>gallon</item>
+        <item>piece</item>
+        <item>whole</item>
+        <item>clove</item>
+        <item>slice</item>
+        <item>stick</item>
+        <item>bunch</item>
+        <item>can</item>
+        <item>pack</item>
+        <item>jar</item>
+        <item>box</item>
+        <item>pinch</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

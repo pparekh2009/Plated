@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/main"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/login_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello,"
+        android:textSize="@dimen/_20sdp"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginVertical="@dimen/_50sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/login_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back!"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/login_header"/>
+
+    <TextView
+        android:id="@+id/label_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/input_email"
+        app:layout_constraintBottom_toTopOf="@id/input_email"/>
+
+    <EditText
+        android:id="@+id/input_email"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter Email"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:textSize="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        android:layout_marginVertical="@dimen/_50sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/login_tagline"/>
+
+    <TextView
+        android:id="@+id/label_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/input_password"
+        app:layout_constraintBottom_toTopOf="@id/input_password"/>
+
+    <EditText
+        android:id="@+id/input_password"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter Password"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:textSize="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        android:layout_marginVertical="@dimen/_50sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/input_email"/>
+
+    <TextView
+        android:id="@+id/forgot_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:textColor="@color/secondary100"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginVertical="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/input_password"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sign_in"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/_12sdp"
+        android:background="@drawable/btn_bg"
+        android:layout_marginVertical="@dimen/_40sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/forgot_pwd" />
+
+    <TextView
+        android:id="@+id/btn_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account? Sign Up"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorColor="@color/primary100"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

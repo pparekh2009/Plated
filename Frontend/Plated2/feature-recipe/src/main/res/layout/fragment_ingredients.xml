@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Ingredients"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="@dimen/_20sdp"
+        android:translationZ="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next ->"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="@id/header"/>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="@id/header"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/name_label"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Ingredient Name"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginBottom="@dimen/_3sdp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/ingredient_input"/>-->
+
+    <AutoCompleteTextView
+        android:id="@+id/ingredient_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:completionThreshold="2"
+        android:hint="Ingredient Name"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/header"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/quantity_label"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Quantity"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginBottom="@dimen/_3sdp"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/quantity_input"/>-->
+
+    <EditText
+        android:id="@+id/quantity_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:hint="Enter quantity"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toStartOf="@id/unit_spinner"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_input" />
+
+    <Spinner
+        android:id="@+id/unit_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/quantity_input"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/quantity_input"
+        app:layout_constraintBottom_toBottomOf="@id/quantity_input"/>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/quantity_input"/>
+
+    <TextView
+        android:id="@+id/ingredient_list_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ingredients:"
+        android:textSize="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/btn_add"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredient_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_list_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

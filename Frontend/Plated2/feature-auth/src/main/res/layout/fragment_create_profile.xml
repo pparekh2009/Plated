@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Setup Profile"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/input_profile_picture"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:src="@drawable/ic_launcher_background"
+        app:shapeAppearanceOverlay="@style/circleImageView"
+        android:layout_marginVertical="@dimen/_35sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/header"/>
+
+    <TextView
+        android:id="@+id/display_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display Name"
+        android:textSize="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/input_display_name"
+        app:layout_constraintBottom_toTopOf="@id/input_display_name"/>
+
+    <EditText
+        android:id="@+id/input_display_name"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35sdp"
+        android:hint="Enter Display Name"
+        android:textSize="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/input_profile_picture"/>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/name_label"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="First Name"-->
+    <!--        android:textSize="@dimen/_8sdp"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:fontFamily="@font/poppins_medium"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/input_first_name"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/input_first_name"/>-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/input_first_name"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="@dimen/_35sdp"-->
+    <!--        android:hint="Enter First Name"-->
+    <!--        android:textSize="@dimen/_10sdp"-->
+    <!--        android:paddingHorizontal="@dimen/_10sdp"-->
+    <!--        android:background="@drawable/input_bg"-->
+    <!--        android:layout_marginTop="@dimen/_30sdp"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/end_line"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/header"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/last_name_label"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Last Name"-->
+    <!--        android:textSize="@dimen/_8sdp"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:fontFamily="@font/poppins_medium"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/input_last_name"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/input_last_name"/>-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/input_last_name"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="@dimen/_30sdp"-->
+    <!--        android:hint="Enter Last Name"-->
+    <!--        android:textSize="@dimen/_10sdp"-->
+    <!--        android:paddingHorizontal="@dimen/_10sdp"-->
+    <!--        android:background="@drawable/input_bg"-->
+    <!--        android:layout_marginTop="@dimen/_30sdp"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/end_line"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/input_first_name"/>-->
+
+    <TextView
+        android:id="@+id/bio_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bio"
+        android:textSize="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/bio_input"
+        app:layout_constraintBottom_toTopOf="@id/bio_input"/>
+
+    <EditText
+        android:id="@+id/bio_input"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:inputType="textMultiLine"
+        android:hint="Enter Bio"
+        android:background="@drawable/input_bg"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/input_display_name"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <TextView
+        android:id="@+id/prof_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profession"
+        android:textSize="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/input_profession"
+        app:layout_constraintBottom_toTopOf="@id/input_profession"/>
+
+    <EditText
+        android:id="@+id/input_profession"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:hint="Enter Profession"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:textSize="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/bio_input" />
+
+    <TextView
+        android:id="@+id/website_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Website"
+        android:textSize="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/website_input"
+        app:layout_constraintBottom_toTopOf="@id/website_input"/>
+
+    <EditText
+        android:id="@+id/website_input"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:hint="Enter Website"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:textSize="@dimen/_10sdp"
+        android:background="@drawable/input_bg"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/input_profession" />
+
+    <Button
+        android:id="@+id/btn_set_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:background="@drawable/btn_bg"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/input_profession"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SKIP"
+        android:textColor="@color/primary100"
+        android:textSize="@dimen/_10sdp"
+        style="@style/Widget.Material3.Button.TextButton"
+        app:layout_constraintStart_toStartOf="@id/btn_set_profile"
+        app:layout_constraintEnd_toEndOf="@id/btn_set_profile"
+        app:layout_constraintTop_toBottomOf="@id/btn_set_profile"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorColor="@color/primary100"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

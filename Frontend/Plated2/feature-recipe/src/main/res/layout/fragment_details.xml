@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Recipe"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next ->"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="@id/header"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="@id/header"/>
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:id="@+id/name_label"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Name"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/end_line"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/name_input_layout"/>-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_35sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter Recipe Name"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:id="@+id/description_label"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Description"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/end_line"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/description_input_layout"/>-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/description_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/name_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter a short recipe description"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:id="@+id/servings_label"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Servings"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/servings_input_layout"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/end_line" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/servings_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/description_input_layout"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/servings_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Number of Servings"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:id="@+id/time_label"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Cooking Time"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/time_input_layout"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/end_line" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/time_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/servings_input_layout"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toStartOf="@id/time_unit_input_layout" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/time_input"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter Cooking Time"
+            android:inputType="numberDecimal"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/time_unit_input_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintStart_toEndOf="@id/time_input_layout"
+        app:layout_constraintTop_toTopOf="@id/time_input_layout"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintBottom_toBottomOf="@id/time_input_layout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/time_unit_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="none"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:id="@+id/cuisine_label"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Cuisine"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/cuisine_input_layout"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/end_line" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cuisine_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/time_input_layout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/cuisine_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Choose Cuisine Type"
+            android:inputType="none"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <com.google.android.material.textview.MaterialTextView-->
+<!--        android:id="@+id/category_label"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Category"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/category_input_layout"-->
+<!--        app:layout_constraintStart_toStartOf="@id/start_line"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/end_line" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/category_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/cuisine_input_layout">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/category_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Recipe Category"
+            android:inputType="none"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

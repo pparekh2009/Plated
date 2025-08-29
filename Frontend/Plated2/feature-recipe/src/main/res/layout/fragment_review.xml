@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_20sdp"
+        android:text="Review"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintStart_toStartOf="@id/start_line" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="@id/start_line"/>
+
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="@id/header"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <TextView
+        android:id="@+id/recipe_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textSize="@dimen/_18sdp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/header"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/recipe_name"/>
+
+    <TextView
+        android:id="@+id/time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textSize="@dimen/_12sdp"
+        android:text="⏱️Cooking Time: "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/description"/>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30 min"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/time_label"
+        app:layout_constraintTop_toTopOf="@id/time_label"
+        app:layout_constraintBottom_toBottomOf="@id/time_label"/>
+
+    <TextView
+        android:id="@+id/servings_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🍽️Servings: "
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/servings"
+        app:layout_constraintTop_toTopOf="@id/time_label"
+        app:layout_constraintBottom_toBottomOf="@id/time_label"/>
+
+    <TextView
+        android:id="@+id/servings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/servings_label"
+        app:layout_constraintBottom_toBottomOf="@id/servings_label"/>
+
+    <TextView
+        android:id="@+id/cuisine_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="🌍Cuisine: "
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/time_label"/>
+
+    <TextView
+        android:id="@+id/cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Indian"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/cuisine_label"
+        app:layout_constraintTop_toTopOf="@id/cuisine_label"
+        app:layout_constraintBottom_toBottomOf="@id/cuisine_label"/>
+
+    <TextView
+        android:id="@+id/category_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🥘Category: "
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/category"
+        app:layout_constraintTop_toTopOf="@id/cuisine_label"
+        app:layout_constraintBottom_toBottomOf="@id/cuisine_label"/>
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Snack"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="@id/category_label"
+        app:layout_constraintBottom_toBottomOf="@id/category_label"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/recipe_tabs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="#D85151"
+        app:tabBackground="@drawable/tab_selector"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/cuisine_label"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/recipe_pages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/recipe_tabs"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorColor="@color/primary100"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
