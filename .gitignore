@@ -1,0 +1,33 @@
+# -------- Android -------
+# Gradle build folders
+**/build/
+.gradle/
+
+# local properties
+local.properties
+
+# IntelliJ/Android Studio files
+*.iml
+.idea/
+
+# Generated files
+captures/
+output.json
+
+
+# -------- Spring -------
+# Gradle or Maven build folders
+target/
+
+
+# Logs
+*.log
+
+# IntelliJ files
+*.iml
+.idea/
+
+# Eclipse files
+.classpath
+.project
+.settings/
