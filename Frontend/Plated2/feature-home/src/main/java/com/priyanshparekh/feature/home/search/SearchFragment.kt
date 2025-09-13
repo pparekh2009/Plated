@@ -115,9 +115,9 @@ class SearchFragment : Fragment() {
                         Log.d("TAG", "onTextChanged: homeFragment: else")
                         searchItems.retainAll { result ->
                             when (result.type) {
-                                ItemType.User -> result.user!!.name.contains(query) == true
-                                ItemType.Recipe -> result.recipe!!.name.contains(query) == true
-                                else -> false
+                                ItemType.User -> result.user!!.name.contains(query, ignoreCase = true) == true
+                                ItemType.Recipe -> result.recipe!!.name.contains(query, ignoreCase = true) == true
+                                ItemType.Header -> true
                             }
                         }
                         adapter.notifyDataSetChanged()

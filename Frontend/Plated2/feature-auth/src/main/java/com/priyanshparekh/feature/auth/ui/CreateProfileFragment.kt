@@ -55,9 +55,8 @@ class CreateProfileFragment : Fragment() {
             user.profession = profession
             user.website = website
 
-            if (website.trim().isNotEmpty()) {
-                authViewModel.signUp(user)
-            }
+            authViewModel.signUp(user)
+
         }
 
         authViewModel.signUpStatus.observe(viewLifecycleOwner) { status ->

@@ -27,7 +27,7 @@ public class UserSignUpRequest {
     private String bio;
     private String profession;
 
-    @Pattern(regexp = "^(https?:\\/\\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(\\/\\S*)?$", message = "URL not valid")
+    @Pattern(regexp = "^(https?:\\/\\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(\\/\\S*)?$|^$", message = "URL not valid")
     private String website;
 
 }

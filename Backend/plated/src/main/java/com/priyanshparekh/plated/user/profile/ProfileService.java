@@ -1,5 +1,6 @@
 package com.priyanshparekh.plated.user.profile;
 
+import com.priyanshparekh.plated.follow.FollowRepository;
 import com.priyanshparekh.plated.recipe.ProfileRecipeItemProjection;
 import com.priyanshparekh.plated.recipe.Recipe;
 import com.priyanshparekh.plated.recipe.RecipeRepository;
@@ -20,6 +21,7 @@ public class ProfileService {
 
     private final UserRepository userRepository;
     private final RecipeRepository recipeRepository;
+    private final FollowRepository followRepository;
 
     UserProfileDto getUserProfile(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + userId));
@@ -38,15 +40,19 @@ public class ProfileService {
             log.info("ProfileService: getUserProfile: recipe: cookingTime: {}", recipe.getCookingTime());
         });
 
+        int followersCount = followRepository.countByFollowingId(userId);
+        int followingCount = followRepository.countByFollowerId(userId);
+
         return UserProfileDto.builder()
+                .id(user.getId())
                 .displayName(user.getDisplayName())
                 .bio(user.getBio())
                 .profession(user.getProfession())
                 .website(user.getWebsite())
                 .recipes(recipes)
                 .recipeCount(recipes.size())
-                .followersCount(0)
-                .followingCount(0)
+                .followersCount(followersCount)
+                .followingCount(followingCount)
                 .build();
     }
 }

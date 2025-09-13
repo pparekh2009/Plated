@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -123,11 +124,103 @@ class ProfileFragment : Fragment() {
 
                     recipesAdapter.notifyDataSetChanged()
 
+                    Log.d("TAG", "onViewCreated: profileFragment: userProfileStatus: SharedPrefManager.getUserId(): ${SharedPrefManager.getUserId()}")
+                    Log.d("TAG", "onViewCreated: profileFragment: userProfileStatus: userProfileDto.id: ${userProfileDto.id}")
+                    profileViewModel.isFollowing(SharedPrefManager.getUserId(), userProfileDto.id)
+                }
+            }
+        }
+
+        profileViewModel.isFollowingStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "onViewCreated: profileFragment: isFollowingStatus: ${status.message}")
+                    binding.progressBar.visibility = View.GONE
+                }
+                is Status.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Status.SUCCESS -> {
+                    if (status.data) {
+                        binding.btnFollow.text = "Following"
+                    } else {
+                        binding.btnFollow.text = "Follow"
+                    }
                     binding.progressBar.visibility = View.GONE
                 }
             }
         }
+
+        binding.btnFollow.setOnClickListener {
+            if (binding.btnFollow.text == "Follow") {
+                Log.d("TAG", "onViewCreated: profileFragment: btnFollow: follow: logged user id: ${SharedPrefManager.getUserId()}")
+                Log.d("TAG", "onViewCreated: profileFragment: btnFollow: follow: user id: $userId")
+                profileViewModel.follow(SharedPrefManager.getUserId(), userId)
+            } else {
+                Log.d("TAG", "onViewCreated: profileFragment: btnFollow: unfollow: logged user id: ${SharedPrefManager.getUserId()}")
+                Log.d("TAG", "onViewCreated: profileFragment: btnFollow: unfollow: user id: $userId")
+                profileViewModel.unfollow(SharedPrefManager.getUserId(), userId)
+            }
+        }
+
+        profileViewModel.followStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "onViewCreated: profileFragment: followStatus: ${status.message}")
+                    binding.progressBar.visibility = View.GONE
+                }
+                is Status.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Status.SUCCESS -> {
+                    Toast.makeText(requireContext(), status.data.message, Toast.LENGTH_SHORT).show()
+                    binding.btnFollow.text = "Following"
+
+                    binding.followersCount.text = (binding.followersCount.text.toString().toInt() + 1).toString()
+
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+        }
+
+        profileViewModel.unfollowStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "onViewCreated: profileFragment: unfollowStatus: ${status.message}")
+                    binding.progressBar.visibility = View.GONE
+                }
+                is Status.LOADING -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Status.SUCCESS -> {
+                    Toast.makeText(requireContext(), status.data.message, Toast.LENGTH_SHORT).show()
+                    binding.btnFollow.text = "Follow"
+
+                    binding.followersCount.text = (binding.followersCount.text.toString().toInt() - 1).toString()
+
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+        }
+
+        binding.followersLayout.setOnClickListener {
+            val bottomModelSheet = FollowBottomSheetFragment()
+
+            val bundle = Bundle()
+            bundle.putString("follow_type", "followers")
+
+            bottomModelSheet.arguments = bundle
+            bottomModelSheet.show(requireActivity().supportFragmentManager, "Followers Bottom Model Sheet")
+        }
+
+        binding.followingLayout.setOnClickListener {
+            val bottomModelSheet = FollowBottomSheetFragment()
+
+            val bundle = Bundle()
+            bundle.putString("follow_type", "following")
+
+            bottomModelSheet.arguments = bundle
+            bottomModelSheet.show(requireActivity().supportFragmentManager, "Followers Bottom Model Sheet")
+        }
     }
-
-
 }

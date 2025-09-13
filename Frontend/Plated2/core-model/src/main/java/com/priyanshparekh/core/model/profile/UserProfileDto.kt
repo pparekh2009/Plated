@@ -3,6 +3,7 @@ package com.priyanshparekh.core.model.profile
 import com.priyanshparekh.core.model.recipe.RecipeItem.ProfileRecipeItem
 
 data class UserProfileDto(
+    val id: Long,
     val displayName: String,
     val bio: String,
     val profession: String,

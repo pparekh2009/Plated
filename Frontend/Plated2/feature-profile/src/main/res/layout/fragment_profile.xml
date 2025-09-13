@@ -280,7 +280,36 @@
 
 
 
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" >-->
+
+<!--        <FrameLayout-->
+<!--            android:id="@+id/follow_bottom_sheet"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Widget.Material3.BottomSheet"-->
+<!--            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">-->
+
+<!--            <com.google.android.material.bottomsheet.BottomSheetDragHandleView-->
+<!--                android:id="@+id/drag_handle"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content" />-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/follow_list"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="@dimen/_15sdp"-->
+<!--                android:layout_marginHorizontal="@dimen/_25sdp"/>-->
+
+<!--        </FrameLayout>-->
+
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress_bar"
