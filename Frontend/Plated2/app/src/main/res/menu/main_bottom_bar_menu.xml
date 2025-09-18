@@ -8,11 +8,11 @@
         android:enabled="true"
         android:title="Home"/>
 
-<!--    <item-->
-<!--        android:id="@+id/saved"-->
-<!--        android:enabled="true"-->
-<!--        android:icon="@drawable/round_bookmark_border_24"-->
-<!--        android:title="Saved" />-->
+    <item
+        android:id="@+id/savedRecipesFragment"
+        android:enabled="true"
+        android:icon="@drawable/round_bookmark_border_24"
+        android:title="Saved" />
 
     <item
         android:id="@+id/detailsFragment"

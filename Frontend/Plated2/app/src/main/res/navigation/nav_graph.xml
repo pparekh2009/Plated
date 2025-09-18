@@ -62,6 +62,11 @@
         android:name="com.priyanshparekh.feature.recipe.ui.ViewRecipeFragment"
         android:label="ViewRecipeFragment"
         tools:layout="@layout/fragment_view_recipe"/>
+    <fragment
+        android:id="@+id/savedRecipesFragment"
+        android:name="com.priyanshparekh.feature.recipe.ui.SavedRecipesFragment"
+        android:label="SavedRecipesFragment"
+        tools:layout="@layout/fragment_saved_recipes"/>
 
 
 </navigation>

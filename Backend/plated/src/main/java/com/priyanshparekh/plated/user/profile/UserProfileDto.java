@@ -1,6 +1,6 @@
 package com.priyanshparekh.plated.user.profile;
 
-import com.priyanshparekh.plated.recipe.dto.ProfileRecipeItem;
+import com.priyanshparekh.plated.recipe.dto.RecipeItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +22,6 @@ public class UserProfileDto {
     private int recipeCount;
     private int followersCount;
     private int followingCount;
-    private List<ProfileRecipeItem> recipes;
+    private List<RecipeItem> recipes;
 
 }

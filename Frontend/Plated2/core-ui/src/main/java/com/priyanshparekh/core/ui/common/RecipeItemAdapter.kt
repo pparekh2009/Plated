@@ -1,4 +1,4 @@
-package com.priyanshparekh.feature.profile;
+package com.priyanshparekh.core.ui.common;
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.priyanshparekh.core.model.recipe.RecipeItem
+import com.priyanshparekh.core.ui.R
 import com.priyanshparekh.core.utils.OnRvItemClickListener
 import kotlin.math.roundToInt
+import kotlin.text.format
 
-class RecipeItemAdapter(val recipeItems: List<RecipeItem>, val onRvItemClickListener: OnRvItemClickListener) : RecyclerView.Adapter<RecipeItemAdapter.ViewHolder>() {
+class RecipeItemAdapter(val recipeItems: List<RecipeItem>, val onRvItemClickListener: OnRvItemClickListener, val isProfileFeed: Boolean) : RecyclerView.Adapter<RecipeItemAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -32,20 +34,20 @@ class RecipeItemAdapter(val recipeItems: List<RecipeItem>, val onRvItemClickList
         val cookingTimeTv: TextView = view.findViewById<TextView>(R.id.recipe_time)
 
         fun bind(recipeItem: RecipeItem) {
-            if (recipeItem is RecipeItem.ProfileRecipeItem) {
-                recipeNameTv.text = recipeItem.recipeName
-                var cookingTime = recipeItem.cookingTime
-                if (cookingTime > 60) {
-                    cookingTime = cookingTime / 60
-                    cookingTimeTv.text = "%.0f hrs".format(recipeItem.cookingTime)
-                } else {
-                    cookingTimeTv.text = "%.0f mins".format(recipeItem.cookingTime)
-                }
 
-            } else if (recipeItem is RecipeItem.FeedRecipeItem) {
-                recipeNameTv.text = recipeItem.recipeName
-                userNameTv.text = recipeItem.username
-                cookingTimeTv.text = recipeItem.time.toString()
+            recipeNameTv.text = recipeItem.recipeName
+            var cookingTime = recipeItem.cookingTime
+            if (cookingTime > 60) {
+                cookingTime = cookingTime / 60
+                cookingTimeTv.text = "%.0f hrs".format(recipeItem.cookingTime)
+            } else {
+                cookingTimeTv.text = "%.0f mins".format(recipeItem.cookingTime)
+            }
+
+            if (isProfileFeed) {
+                userNameTv.visibility = View.GONE
+            } else {
+                userNameTv.text = recipeItem.displayName
             }
             view.setOnClickListener(this)
         }

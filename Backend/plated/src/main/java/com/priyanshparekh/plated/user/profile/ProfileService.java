@@ -1,10 +1,8 @@
 package com.priyanshparekh.plated.user.profile;
 
 import com.priyanshparekh.plated.follow.FollowRepository;
-import com.priyanshparekh.plated.recipe.ProfileRecipeItemProjection;
-import com.priyanshparekh.plated.recipe.Recipe;
 import com.priyanshparekh.plated.recipe.RecipeRepository;
-import com.priyanshparekh.plated.recipe.dto.ProfileRecipeItem;
+import com.priyanshparekh.plated.recipe.dto.RecipeItem;
 import com.priyanshparekh.plated.user.User;
 import com.priyanshparekh.plated.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +24,10 @@ public class ProfileService {
     UserProfileDto getUserProfile(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + userId));
 
-        List<ProfileRecipeItem> recipes = recipeRepository.findAllByUserId(userId)
+        List<RecipeItem> recipes = recipeRepository.findAllByUserId(userId)
                 .stream()
                 .map(projection ->
-                        ProfileRecipeItem.builder()
+                        RecipeItem.builder()
                                 .recipeId(projection.getId())
                                 .recipeName(projection.getName())
                                 .cookingTime(projection.getCookingTime())

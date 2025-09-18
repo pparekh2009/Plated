@@ -13,7 +13,9 @@ import com.priyanshparekh.core.model.recipe.RecipeIngredientDto
 import com.priyanshparekh.core.model.recipe.StepDto
 import com.priyanshparekh.core.model.recipe.ViewRecipeResponse
 import com.priyanshparekh.core.network.Status
+import com.priyanshparekh.core.resources.R
 import com.priyanshparekh.core.utils.Constants
+import com.priyanshparekh.core.utils.SharedPrefManager
 import com.priyanshparekh.feature.recipe.RecipeViewModel
 import com.priyanshparekh.feature.recipe.adapter.ReviewViewPagerAdapter
 import com.priyanshparekh.feature.recipe.databinding.FragmentViewRecipeBinding
@@ -25,6 +27,8 @@ class ViewRecipeFragment : Fragment() {
     private val recipeViewModel: RecipeViewModel by viewModels()
 
     private lateinit var recipe: ViewRecipeResponse
+
+    private var isRecipeSaved = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +63,22 @@ class ViewRecipeFragment : Fragment() {
                 is Status.LOADING -> {}
                 is Status.SUCCESS -> {
                     recipe = status.data
+                    val userId = SharedPrefManager.getUserId()
+
+                    recipeViewModel.savedRecipeExists(userId, recipe.recipeId)
 
                     binding.recipeName.text = recipe.name
                     binding.username.text = recipe.userName
+                    binding.tvCategory.text = recipe.category
+                    binding.tvCuisine.text = recipe.cuisine
+
+                    var cookingTime = recipe.cookingTime
+                    binding.tvCookingTime.text = if (cookingTime < 60) {
+                        "%.0f mins".format(cookingTime)
+                    } else {
+                        cookingTime = cookingTime / 60
+                        "%.0f hrs".format(cookingTime)
+                    }
 
                     val ingredientsJson = recipe.ingredients
                     Log.d("TAG", "onCreate: ingredients size: ${ingredientsJson.size}")
@@ -82,7 +99,23 @@ class ViewRecipeFragment : Fragment() {
                     viewPagerAdapter.refreshData()
                 }
             }
+        }
 
+        recipeViewModel.savedRecipeExistsStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "viewRecipeFragment: onViewCreated: savedRecipeExistsStatus: ${status.message}")
+                }
+                is Status.LOADING -> {}
+                is Status.SUCCESS -> {
+                    isRecipeSaved = status.data
+                    if (isRecipeSaved) {
+                        binding.btnSave.setImageResource(R.drawable.round_bookmark_filled_24)
+                    } else {
+                        binding.btnSave.setImageResource(R.drawable.round_bookmark_border_24)
+                    }
+                }
+            }
         }
 
         Log.d("TAG", "onCreate: adapter set")
@@ -98,12 +131,41 @@ class ViewRecipeFragment : Fragment() {
             tab.text = tabTitles[position]
         }.attach()
 
-//        binding.btnSave.setOnClickListener {
-//            val savedRecipe = SavedRecipe(userId, recipeId)
-//
-//            recipeViewModel.saveRecipe(userId, savedRecipe)
-//
-//        }
+        binding.btnSave.setOnClickListener {
+            val userId = SharedPrefManager.getUserId()
+            if (isRecipeSaved) {
+                recipeViewModel.unsaveRecipe(userId, recipeId)
+            } else {
+                recipeViewModel.saveRecipe(userId, recipeId)
+            }
+        }
+
+
+        recipeViewModel.saveRecipeStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "onViewCreated: saveRecipeStatus: ${status.message}")
+                }
+                is Status.LOADING -> {}
+                is Status.SUCCESS -> {
+                    binding.btnSave.setImageResource(R.drawable.round_bookmark_filled_24)
+                    Log.d("TAG", "onViewCreated: saveRecipeStatus: ${status.data}")
+                }
+            }
+        }
+
+        recipeViewModel.unsaveRecipeStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "onViewCreated: unsaveRecipeStatus: ${status.message}")
+                }
+                is Status.LOADING -> {}
+                is Status.SUCCESS -> {
+                    binding.btnSave.setImageResource(R.drawable.round_bookmark_border_24)
+                    Log.d("TAG", "onViewCreated: unsaveRecipeStatus: ${status.data}")
+                }
+            }
+        }
 
 //        binding.reviewCount.setOnClickListener {
 //            val intent = Intent(this, ReviewActivity::class.java)

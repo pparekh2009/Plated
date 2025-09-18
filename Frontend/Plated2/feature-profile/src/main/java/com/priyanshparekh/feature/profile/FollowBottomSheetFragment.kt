@@ -68,7 +68,7 @@ class FollowBottomSheetFragment: BottomSheetDialogFragment() {
         binding.rvFollowRelationList.adapter = adapter
         binding.rvFollowRelationList.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFollowRelationList.setHasFixedSize(true)
-//        binding.rvFollowRelationList.addItemDecoration(MarginItemDecoration(com.intuit.sdp.R.dimen._10sdp))
+        binding.rvFollowRelationList.addItemDecoration(MarginItemDecoration(requireContext().resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp)))
 
         profileViewModel.followerStatus.observe(viewLifecycleOwner) { status ->
             when (status) {

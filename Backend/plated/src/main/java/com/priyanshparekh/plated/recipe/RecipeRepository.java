@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
-    List<ProfileRecipeItemProjection> findAllByUserId(Long userId);
+    List<RecipeItemProjection> findAllByUserId(Long userId);
 
     List<RecipeSearchItemProjection> findAllByNameContaining(String query);
 }

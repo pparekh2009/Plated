@@ -11,9 +11,10 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.priyanshparekh.core.model.recipe.RecipeItem.ProfileRecipeItem
+import com.priyanshparekh.core.model.recipe.RecipeItem
 import com.priyanshparekh.core.navigation.NavigatorProvider
 import com.priyanshparekh.core.network.Status
+import com.priyanshparekh.core.ui.common.RecipeItemAdapter
 import com.priyanshparekh.core.utils.Constants
 import com.priyanshparekh.core.utils.MarginItemDecoration
 import com.priyanshparekh.core.utils.OnRvItemClickListener
@@ -65,19 +66,21 @@ class ProfileFragment : Fragment() {
         }
         profileViewModel.getUserProfile(userId)
 
-        val recipeItemList = ArrayList<ProfileRecipeItem>()
+        val recipeItemList = ArrayList<RecipeItem>()
         val recipesAdapter = RecipeItemAdapter(recipeItemList, object : OnRvItemClickListener {
             override fun onClick(position: Int) {
                 super.onClick(position)
 
                 NavigatorProvider.commonNavigator.openViewRecipeFragment(findNavController(), recipeItemList[position].recipeId)
             }
-        })
+        }, isProfileFeed = true)
 
         binding.recipes.adapter = recipesAdapter
         binding.recipes.layoutManager = LinearLayoutManager(requireContext())
         binding.recipes.setHasFixedSize(true)
-        binding.recipes.addItemDecoration(MarginItemDecoration(requireContext().resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp)))
+        if (binding.recipes.itemDecorationCount == 0) {
+            binding.recipes.addItemDecoration(MarginItemDecoration(requireContext().resources.getDimensionPixelSize(com.intuit.sdp.R.dimen._10sdp)))
+        }
 
         binding.menu.setOnClickListener {
             Log.d("TAG", "onViewCreated: menu pressed")

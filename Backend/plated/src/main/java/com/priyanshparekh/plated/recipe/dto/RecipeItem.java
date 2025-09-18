@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProfileRecipeItem {
+public class RecipeItem {
 
     private Long recipeId;
     private String recipeName;
     private float cookingTime;
+    private String displayName;
 
 }

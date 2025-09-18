@@ -23,6 +23,7 @@ rootProject.name = "Plated"
 include(":app")
 include(":core-model")
 include(":core-network")
+include(":core-ui")
 include(":core-utils")
 include(":feature-auth")
 include(":feature-home")

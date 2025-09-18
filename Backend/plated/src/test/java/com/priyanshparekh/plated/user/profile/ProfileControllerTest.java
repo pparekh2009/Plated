@@ -2,7 +2,6 @@ package com.priyanshparekh.plated.user.profile;
 
 import com.priyanshparekh.plated.auth.AuthService;
 import com.priyanshparekh.plated.config.TestSecurityConfig;
-import com.priyanshparekh.plated.recipe.dto.ProfileRecipeItem;
 import com.priyanshparekh.plated.security.JwtAuthenticationFilter;
 import com.priyanshparekh.plated.security.JwtService;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;

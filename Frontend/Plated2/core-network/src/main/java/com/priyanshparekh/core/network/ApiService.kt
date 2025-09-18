@@ -11,6 +11,7 @@ import com.priyanshparekh.core.model.profile.UserProfileDto
 import com.priyanshparekh.core.model.recipe.AddRecipeRequest
 import com.priyanshparekh.core.model.recipe.AddRecipeResponse
 import com.priyanshparekh.core.model.recipe.IngredientDto
+import com.priyanshparekh.core.model.recipe.RecipeItem
 import com.priyanshparekh.core.model.recipe.ViewRecipeResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -52,6 +53,17 @@ interface ApiService {
     @GET("recipes/{recipe-id}")
     suspend fun getRecipe(@Path(value = "recipe-id") recipeId: Long): Response<ViewRecipeResponse>
 
+    @POST("users/{user-id}/save/{recipe-id}")
+    suspend fun saveRecipe(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<MessageResponse>
+
+    @DELETE("users/{user-id}/unsave/{recipe-id}")
+    suspend fun unsaveRecipe(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<MessageResponse>
+
+    @GET("users/{user-id}/saved")
+    suspend fun getSavedRecipes(@Path(value = "user-id") userId: Long): Response<List<RecipeItem>>
+
+    @GET("users/{user-id}/exists/{recipe-id}")
+    suspend fun savedRecipeExists(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<Boolean>
 
 
     /** User **/

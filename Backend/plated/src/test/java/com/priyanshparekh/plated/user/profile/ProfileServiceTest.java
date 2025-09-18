@@ -1,14 +1,10 @@
 package com.priyanshparekh.plated.user.profile;
 
-import com.priyanshparekh.plated.auth.AuthService;
-import com.priyanshparekh.plated.recipe.ProfileRecipeItemProjection;
+import com.priyanshparekh.plated.recipe.RecipeItemProjection;
 import com.priyanshparekh.plated.recipe.RecipeRepository;
-import com.priyanshparekh.plated.security.JwtAuthenticationFilter;
-import com.priyanshparekh.plated.security.JwtService;
 import com.priyanshparekh.plated.user.User;
 import com.priyanshparekh.plated.user.UserRepository;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,15 +36,15 @@ public class ProfileServiceTest {
         // Arrange
         User user = new User(1L, "test@email.com", "password", "John Doe", "Food lover", "Chef", "https://johnsrecipes.com");
 
-        ProfileRecipeItemProjection recipe1 = Mockito.mock(ProfileRecipeItemProjection.class);
+        RecipeItemProjection recipe1 = Mockito.mock(RecipeItemProjection.class);
         when(recipe1.getName()).thenReturn("Pasta");
         when(recipe1.getCookingTime()).thenReturn(30f);
 
-        ProfileRecipeItemProjection recipe2 = Mockito.mock(ProfileRecipeItemProjection.class);
+        RecipeItemProjection recipe2 = Mockito.mock(RecipeItemProjection.class);
         when(recipe2.getName()).thenReturn("Salad");
         when(recipe2.getCookingTime()).thenReturn(10f);
 
-        List<ProfileRecipeItemProjection> recipeProjections = List.of(recipe1, recipe2);
+        List<RecipeItemProjection> recipeProjections = List.of(recipe1, recipe2);
 
         when(userRepository.findById(1L)).thenReturn(Optional.of(user));
         when(recipeRepository.findAllByUserId(1L)).thenReturn(recipeProjections);
