@@ -2,7 +2,10 @@ package com.priyanshparekh.plated.recipe;
 
 import com.priyanshparekh.plated.user.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Table(name = "recipes")
@@ -28,7 +31,17 @@ public class Recipe {
     private String cuisine;
     private String category;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @NotNull
+    @Column(name = "created_at")
+    private Long createdAt;
+
+    @PrePersist
+    void setCreatedDate() {
+        createdAt = System.currentTimeMillis();
+    }
 }
