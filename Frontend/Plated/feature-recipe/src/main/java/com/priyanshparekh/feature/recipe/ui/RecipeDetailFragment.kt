@@ -26,6 +26,7 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var recipe: RecipeDetailResponse
 
     private var isRecipeSaved = false
+    private var isRecipeLiked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +63,7 @@ class RecipeDetailFragment : Fragment() {
                     val userId = SharedPrefManager.getUserId()
 
                     recipeViewModel.savedRecipeExists(userId, recipe.recipeId)
+                    recipeViewModel.likedRecipeExists(userId, recipe.recipeId)
 
                     binding.recipeName.text = recipe.name
                     binding.username.text = "By ${recipe.userName}"
@@ -96,8 +98,6 @@ class RecipeDetailFragment : Fragment() {
                 }
             }
         }
-
-        Log.d("TAG", "onCreate: adapter set")
 
 
         binding.btnSave.setOnClickListener {
@@ -136,19 +136,58 @@ class RecipeDetailFragment : Fragment() {
             }
         }
 
-//        binding.reviewCount.setOnClickListener {
-//            val intent = Intent(this, ReviewActivity::class.java)
-//            intent.putExtra(Constants.KEY_RECIPE_ID, recipeId)
-//            startActivity(intent)
-//        }
 
-//        binding.btnFollow.setOnClickListener {
-//            binding.btnFollow.text = "Following"
+        recipeViewModel.likedRecipeExistsStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "viewRecipeFragment: onViewCreated: likedRecipeExistsStatus: ${status.message}")
+                }
+                is Status.LOADING -> {}
+                is Status.SUCCESS -> {
+                    isRecipeLiked = status.data
+                    if (isRecipeLiked) {
+                        binding.btnLike.setImageResource(R.drawable.baseline_favorite_24)
+                    } else {
+                        binding.btnLike.setImageResource(R.drawable.outline_favorite_24)
+                    }
+                }
+            }
+        }
 
-//            val followerUserId = getSharedPreferences(Constants.LOGIN_PREFS, MODE_PRIVATE).getInt(Constants.KEY_USER_ID, -1)
-//            val followedUserId = recipe.userId
 
-//            recipeViewModel.followUser(followerUserId, Follow(followerUserId, followedUserId))
-//        }
+        binding.btnLike.setOnClickListener {
+            val userId = SharedPrefManager.getUserId()
+            if (isRecipeLiked) {
+                recipeViewModel.unlikeRecipe(userId, recipeId)
+            } else {
+                recipeViewModel.likeRecipe(userId, recipeId)
+            }
+        }
+
+        recipeViewModel.likeRecipeStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "onViewCreated: likeRecipeStatus: ${status.message}")
+                }
+                is Status.LOADING -> {}
+                is Status.SUCCESS -> {
+                    binding.btnLike.setImageResource(R.drawable.baseline_favorite_24)
+                    Log.d("TAG", "onViewCreated: likeRecipeStatus: ${status.data}")
+                }
+            }
+        }
+
+        recipeViewModel.unlikeRecipeStatus.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is Status.ERROR -> {
+                    Log.d("TAG", "onViewCreated: unlikeRecipeStatus: ${status.message}")
+                }
+                is Status.LOADING -> {}
+                is Status.SUCCESS -> {
+                    binding.btnLike.setImageResource(R.drawable.outline_favorite_24)
+                    Log.d("TAG", "onViewCreated: unlikeRecipeStatus: ${status.data}")
+                }
+            }
+        }
     }
 }

@@ -33,4 +33,16 @@ class RecipeRepository {
     suspend fun unsaveRecipe(userId: Long, recipeId: Long) = withContext(Dispatchers.IO) {
         return@withContext RetrofitInstance.api.unsaveRecipe(userId, recipeId)
     }
+
+    suspend fun checkLikedRecipeExists(userId: Long, recipeId: Long) = withContext(Dispatchers.IO) {
+        return@withContext RetrofitInstance.api.likedRecipeExists(userId, recipeId)
+    }
+
+    suspend fun likeRecipe(userId: Long, recipeId: Long) = withContext(Dispatchers.IO) {
+        return@withContext RetrofitInstance.api.likeRecipe(userId, recipeId)
+    }
+
+    suspend fun unlikeRecipe(userId: Long, recipeId: Long) = withContext(Dispatchers.IO) {
+        return@withContext RetrofitInstance.api.unlikeRecipe(userId, recipeId)
+    }
 }

@@ -57,6 +57,8 @@ interface ApiService {
     @GET("recipes/{recipe-id}/preparation-data")
     suspend fun getRecipePreparationData(@Path(value = "recipe-id") recipeId: Long): Response<RecipePreparationResponse>
 
+    /** Save Recipes **/
+
     @POST("users/{user-id}/save/{recipe-id}")
     suspend fun saveRecipe(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<MessageResponse>
 
@@ -66,8 +68,19 @@ interface ApiService {
     @GET("users/{user-id}/saved")
     suspend fun getSavedRecipes(@Path(value = "user-id") userId: Long): Response<List<RecipeItem>>
 
-    @GET("users/{user-id}/exists/{recipe-id}")
+    @GET("users/{user-id}/is-saved/{recipe-id}")
     suspend fun savedRecipeExists(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<Boolean>
+
+    /** Like Recipes **/
+
+    @POST("users/{user-id}/like/{recipe-id}")
+    suspend fun likeRecipe(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<MessageResponse>
+
+    @DELETE("users/{user-id}/unlike/{recipe-id}")
+    suspend fun unlikeRecipe(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<MessageResponse>
+
+    @GET("users/{user-id}/is-liked/{recipe-id}")
+    suspend fun likedRecipeExists(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<Boolean>
 
 
     /** User **/

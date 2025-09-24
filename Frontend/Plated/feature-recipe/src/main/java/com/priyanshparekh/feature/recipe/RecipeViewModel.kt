@@ -229,13 +229,13 @@ class RecipeViewModel(app: Application): AndroidViewModel(app) {
                     _unsaveRecipeStatus.value = Status.SUCCESS(body)
                 } else {
                     _unsaveRecipeStatus.value = Status.ERROR("Error: $errorString")
-                    Log.d("TAG", "saveRecipe: recipeViewModel: inner if: code: ${response.code()}")
-                    Log.d("TAG", "saveRecipe: recipeViewModel: inner if: message: $errorString")
+                    Log.d("TAG", "unsaveRecipe: recipeViewModel: inner if: code: ${response.code()}")
+                    Log.d("TAG", "unsaveRecipe: recipeViewModel: inner if: message: $errorString")
                 }
             } else {
                 _unsaveRecipeStatus.value = Status.ERROR("Error: $errorString")
-                Log.d("TAG", "saveRecipe: recipeViewModel: outer if: code: ${response.code()}")
-                Log.d("TAG", "saveRecipe: recipeViewModel: outer if: message: $errorString")
+                Log.d("TAG", "unsaveRecipe: recipeViewModel: outer if: code: ${response.code()}")
+                Log.d("TAG", "unsaveRecipe: recipeViewModel: outer if: message: $errorString")
             }
         }
     }
@@ -269,11 +269,84 @@ class RecipeViewModel(app: Application): AndroidViewModel(app) {
     }
 
 
+    private val _likedRecipeExistsStatus = MutableLiveData<Status<Boolean>>()
+    val likedRecipeExistsStatus: LiveData<Status<Boolean>> = _likedRecipeExistsStatus
 
-
-    fun getAllIngredients() {
+    fun likedRecipeExists(userId: Long, recipeId: Long) {
         viewModelScope.launch {
+            val response = recipeRepository.checkLikedRecipeExists(userId, recipeId)
+            val errorString = response.errorBody()?.string()
 
+            if (response.isSuccessful) {
+                val body = response.body()
+
+                if (body != null) {
+                    _likedRecipeExistsStatus.value = Status.SUCCESS(body)
+                } else {
+                    _likedRecipeExistsStatus.value = Status.ERROR("Error: $errorString")
+                    Log.d("TAG", "likedRecipeExists: recipeViewModel: inner if: code: ${response.code()}")
+                    Log.d("TAG", "likedRecipeExists: recipeViewModel: inner if: message: $errorString")
+                }
+            } else {
+                _likedRecipeExistsStatus.value = Status.ERROR("Error: $errorString")
+                Log.d("TAG", "likedRecipeExists: recipeViewModel: outer if: code: ${response.code()}")
+                Log.d("TAG", "likedRecipeExists: recipeViewModel: outer if: message: $errorString")
+            }
+        }
+    }
+
+
+
+    private val _likeRecipeStatus = MutableLiveData<Status<MessageResponse>>()
+    val likeRecipeStatus: LiveData<Status<MessageResponse>> = _likeRecipeStatus
+
+    fun likeRecipe(userId: Long, recipeId: Long) {
+        viewModelScope.launch {
+            val response = recipeRepository.likeRecipe(userId, recipeId)
+            val errorString = response.errorBody()?.string()
+
+            if (response.isSuccessful) {
+                val body = response.body()
+
+                if (body != null) {
+                    _likeRecipeStatus.value = Status.SUCCESS(body)
+                } else {
+                    _likeRecipeStatus.value = Status.ERROR("Error: $errorString")
+                    Log.d("TAG", "likeRecipe: recipeViewModel: inner if: code: ${response.code()}")
+                    Log.d("TAG", "likeRecipe: recipeViewModel: inner if: message: $errorString")
+                }
+            } else {
+                _likeRecipeStatus.value = Status.ERROR("Error: $errorString")
+                Log.d("TAG", "likeRecipe: recipeViewModel: outer if: code: ${response.code()}")
+                Log.d("TAG", "likeRecipe: recipeViewModel: outer if: message: $errorString")
+            }
+        }
+    }
+
+
+    private val _unlikeRecipeStatus = MutableLiveData<Status<MessageResponse>>()
+    val unlikeRecipeStatus: LiveData<Status<MessageResponse>> = _unlikeRecipeStatus
+
+    fun unlikeRecipe(userId: Long, recipeId: Long) {
+        viewModelScope.launch {
+            val response = recipeRepository.unlikeRecipe(userId, recipeId)
+            val errorString = response.errorBody()?.string()
+
+            if (response.isSuccessful) {
+                val body = response.body()
+
+                if (body != null) {
+                    _unlikeRecipeStatus.value = Status.SUCCESS(body)
+                } else {
+                    _unlikeRecipeStatus.value = Status.ERROR("Error: $errorString")
+                    Log.d("TAG", "unlikeRecipe: recipeViewModel: inner if: code: ${response.code()}")
+                    Log.d("TAG", "unlikeRecipe: recipeViewModel: inner if: message: $errorString")
+                }
+            } else {
+                _unlikeRecipeStatus.value = Status.ERROR("Error: $errorString")
+                Log.d("TAG", "unlikeRecipe: recipeViewModel: outer if: code: ${response.code()}")
+                Log.d("TAG", "unlikeRecipe: recipeViewModel: outer if: message: $errorString")
+            }
         }
     }
 }
