@@ -48,4 +48,6 @@ dependencies {
 //    implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.androidx.navigation.ui.ktx)
+
+    implementation(project(":core-model"))
 }

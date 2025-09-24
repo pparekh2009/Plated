@@ -1,24 +1,21 @@
 package com.priyanshparekh.feature.recipe
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.priyanshparekh.core.database.PlatedDb
-import com.priyanshparekh.core.database.dao.IngredientDAO
 import com.priyanshparekh.core.database.entity.Ingredient
 import com.priyanshparekh.core.model.MessageResponse
 import com.priyanshparekh.core.model.recipe.AddRecipeRequest
 import com.priyanshparekh.core.model.recipe.AddRecipeResponse
-import com.priyanshparekh.core.model.recipe.IngredientDto
 import com.priyanshparekh.core.model.recipe.RecipeIngredientDto
 import com.priyanshparekh.core.model.recipe.RecipeItem
 import com.priyanshparekh.core.model.recipe.StepDto
-import com.priyanshparekh.core.model.recipe.ViewRecipeResponse
+import com.priyanshparekh.core.model.recipe.RecipeDetailResponse
+import com.priyanshparekh.core.model.recipe.RecipePreparationResponse
 import com.priyanshparekh.core.network.RetrofitInstance
 import com.priyanshparekh.core.network.Status
 import kotlinx.coroutines.launch
@@ -107,8 +104,8 @@ class RecipeViewModel(app: Application): AndroidViewModel(app) {
     }
 
 
-    private val _viewRecipeStatus = MutableLiveData<Status<ViewRecipeResponse>>()
-    val viewRecipeStatus: LiveData<Status<ViewRecipeResponse>> = _viewRecipeStatus
+    private val _viewRecipeStatus = MutableLiveData<Status<RecipeDetailResponse>>()
+    val viewRecipeStatus: LiveData<Status<RecipeDetailResponse>> = _viewRecipeStatus
 
     fun getRecipe(recipeId: Long) {
         viewModelScope.launch {
@@ -131,6 +128,35 @@ class RecipeViewModel(app: Application): AndroidViewModel(app) {
             }
         }
     }
+
+
+    private val _recipePreparationStatus = MutableLiveData<Status<RecipePreparationResponse>>()
+    val recipePreparationStatus: LiveData<Status<RecipePreparationResponse>> = _recipePreparationStatus
+
+    fun getRecipePreparationData(recipeId: Long) {
+        viewModelScope.launch {
+            val response = recipeRepository.getRecipePreparationData(recipeId)
+            val errorString = response.errorBody()?.string()
+            val code = response.code()
+
+            if (response.isSuccessful) {
+                val body = response.body()
+
+                if (body != null) {
+                    _recipePreparationStatus.value = Status.SUCCESS(body)
+                } else {
+                    _recipePreparationStatus.value = Status.ERROR("Error getting recipe")
+                    Log.d("TAG", "getRecipePreparationData: recipeViewModel: inner if: code: $code")
+                    Log.d("TAG", "getRecipePreparationData: recipeViewModel: inner if: message: $errorString")
+                }
+            } else {
+                _recipePreparationStatus.value = Status.ERROR("Error getting recipe")
+                Log.d("TAG", "getRecipePreparationData: recipeViewModel: outer if: code: $code")
+                Log.d("TAG", "getRecipePreparationData: recipeViewModel: outer if: message: $errorString")
+            }
+        }
+    }
+
 
 
     private val _savedRecipesStatus = MutableLiveData<Status<List<RecipeItem>>>()

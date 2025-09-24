@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/recipe_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Spicy chicken burger with French Fries"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="By Laura Wilson"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/recipe_name"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <TextView
+        android:id="@+id/review_count"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="13K Reviews"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:text="This is a sample description for a sample recipe, made by username."
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/review_count"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_cuisine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cuisine: Indian"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Category: Breakfast"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_cuisine"/>
+
+    <TextView
+        android:id="@+id/tv_cooking_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cooking Time: 30 mins"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_category"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_servings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Servings: 2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_cooking_time"/>
+
+    <ImageView
+        android:id="@+id/btn_like"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:src="@drawable/outline_favorite_24"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintTop_toBottomOf="@id/tv_servings" />
+
+    <ImageView
+        android:id="@+id/btn_share"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:src="@drawable/rounded_send_24"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/btn_like"
+        app:layout_constraintTop_toTopOf="@id/btn_like"
+        app:layout_constraintBottom_toBottomOf="@id/btn_like"/>
+
+    <ImageView
+        android:id="@+id/btn_save"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:src="@drawable/round_bookmark_border_24"
+        android:background="@color/white"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/btn_share"
+        app:layout_constraintBottom_toBottomOf="@id/btn_share"
+        app:layout_constraintTop_toTopOf="@id/btn_share"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_view_recipe"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="View Recipe"
+        android:layout_marginTop="@dimen/_25sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/btn_like"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/image_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="@dimen/_25sdp"
+        app:layout_constraintStart_toStartOf="@id/start_line"
+        app:layout_constraintEnd_toEndOf="@id/end_line"
+        app:layout_constraintTop_toBottomOf="@id/btn_view_recipe"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,7 +74,7 @@ class SearchFragment : Fragment() {
 
                 } else if (item.type == ItemType.Recipe) {
                     Log.d("TAG", "adapter onClick: homeFragment: recipe")
-                    NavigatorProvider.commonNavigator.openViewRecipeFragment(findNavController(), item.recipe!!.id)
+                    NavigatorProvider.commonNavigator.openRecipeDetailFragment(findNavController(), item.recipe!!.id)
                 }
             }
         })

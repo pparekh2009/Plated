@@ -2,9 +2,12 @@ package com.priyanshparekh.plated.navigatorimpl
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
+import com.priyanshparekh.core.model.recipe.RecipeIngredientDto
+import com.priyanshparekh.core.model.recipe.StepDto
 import com.priyanshparekh.core.navigation.CommonNavigator
 import com.priyanshparekh.core.utils.Constants
 import com.priyanshparekh.feature.auth.ui.AuthActivity
@@ -49,6 +52,18 @@ class CommonNavigatorImpl: CommonNavigator {
         )
     }
 
+    override fun openRecipeDetailFragment(
+        navController: NavController,
+        recipeId: Long
+    ) {
+        val bundle = bundleOf(Constants.Args.KEY_RECIPE_ID to recipeId)
+
+        navController.navigate(
+            R.id.recipeDetailFragment,
+            bundle
+        )
+    }
+
     override fun openViewRecipeFragment(
         navController: NavController,
         recipeId: Long
@@ -57,6 +72,22 @@ class CommonNavigatorImpl: CommonNavigator {
 
         navController.navigate(
             R.id.viewRecipeFragment,
+            bundle
+        )
+    }
+
+    override fun openCookModeFragment(
+        navController: NavController,
+        ingredients: List<RecipeIngredientDto>,
+        steps: List<StepDto>
+    ) {
+        val bundle = bundleOf(
+            Pair(Constants.Args.KEY_INGREDIENTS, ingredients),
+            Pair(Constants.Args.KEY_STEPS, steps)
+        )
+
+        navController.navigate(
+            R.id.cookModeFragment,
             bundle
         )
     }

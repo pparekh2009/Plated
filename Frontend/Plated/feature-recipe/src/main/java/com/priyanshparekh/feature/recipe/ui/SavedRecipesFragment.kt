@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +17,6 @@ import com.priyanshparekh.core.ui.common.RecipeItemAdapter
 import com.priyanshparekh.core.utils.MarginItemDecoration
 import com.priyanshparekh.core.utils.OnRvItemClickListener
 import com.priyanshparekh.core.utils.SharedPrefManager
-import com.priyanshparekh.feature.recipe.R
 import com.priyanshparekh.feature.recipe.RecipeViewModel
 import com.priyanshparekh.feature.recipe.databinding.FragmentSavedRecipesBinding
 
@@ -50,7 +48,7 @@ class SavedRecipesFragment : Fragment() {
             override fun onClick(position: Int) {
                 super.onClick(position)
 
-                NavigatorProvider.commonNavigator.openViewRecipeFragment(findNavController(), savedRecipes[position].recipeId)
+                NavigatorProvider.commonNavigator.openRecipeDetailFragment(findNavController(), savedRecipes[position].recipeId)
             }
         }, isProfileFeed = false)
 

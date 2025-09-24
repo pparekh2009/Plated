@@ -25,6 +25,9 @@ object Constants {
 
         const val KEY_RECIPE_ID = "recipe_id"
 
+        const val KEY_INGREDIENTS = "ingredients"
+        const val KEY_STEPS = "steps"
+
     }
 
 }

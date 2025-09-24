@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
             override fun onClick(position: Int) {
                 super.onClick(position)
 
-                NavigatorProvider.commonNavigator.openViewRecipeFragment(findNavController(), recipeItemList[position].recipeId)
+                NavigatorProvider.commonNavigator.openRecipeDetailFragment(findNavController(), recipeItemList[position].recipeId)
             }
         }, isProfileFeed = true)
 

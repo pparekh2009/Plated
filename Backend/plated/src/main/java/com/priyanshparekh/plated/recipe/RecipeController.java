@@ -1,10 +1,7 @@
 package com.priyanshparekh.plated.recipe;
 
 import com.priyanshparekh.plated.MessageResponse;
-import com.priyanshparekh.plated.recipe.dto.AddRecipeRequest;
-import com.priyanshparekh.plated.recipe.dto.AddRecipeResponse;
-import com.priyanshparekh.plated.recipe.dto.RecipeItem;
-import com.priyanshparekh.plated.recipe.dto.ViewRecipeResponse;
+import com.priyanshparekh.plated.recipe.dto.*;
 import com.priyanshparekh.plated.recipe.saved.SavedRecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,9 +25,15 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes/{recipe-id}")
-    ResponseEntity<ViewRecipeResponse> getRecipe(@PathVariable("recipe-id") Long recipeId) {
-        ViewRecipeResponse recipe = recipeService.getRecipe(recipeId);
+    ResponseEntity<RecipeDetailResponse> getRecipe(@PathVariable("recipe-id") Long recipeId) {
+        RecipeDetailResponse recipe = recipeService.getRecipe(recipeId);
         return ResponseEntity.ok(recipe);
+    }
+
+    @GetMapping("recipes/{recipe-id}/preparation-data")
+    ResponseEntity<RecipePreparationResponse> getRecipePreparationData(@PathVariable("recipe-id") Long recipeId) {
+        RecipePreparationResponse recipePreparationResponse = recipeService.getRecipePreparationData(recipeId);
+        return ResponseEntity.ok(recipePreparationResponse);
     }
 
     @GetMapping("/users/{user-id}/saved")

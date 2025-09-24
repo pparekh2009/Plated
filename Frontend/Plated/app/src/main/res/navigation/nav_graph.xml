@@ -58,10 +58,23 @@
         tools:layout="@layout/fragment_search"/>
 
     <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.priyanshparekh.feature.recipe.ui.RecipeDetailFragment"
+        android:label="RecipeDetailFragment"
+        tools:layout="@layout/fragment_recipe_detail"/>
+
+    <fragment
         android:id="@+id/viewRecipeFragment"
         android:name="com.priyanshparekh.feature.recipe.ui.ViewRecipeFragment"
         android:label="ViewRecipeFragment"
         tools:layout="@layout/fragment_view_recipe"/>
+
+    <fragment
+        android:id="@+id/cookModeFragment"
+        android:name="com.priyanshparekh.feature.recipe.ui.CookModeFragment"
+        android:label="CookModeFragment"
+        tools:layout="@layout/fragment_cook_mode"/>
+
     <fragment
         android:id="@+id/savedRecipesFragment"
         android:name="com.priyanshparekh.feature.recipe.ui.SavedRecipesFragment"

@@ -1,10 +1,9 @@
 package com.priyanshparekh.plated.recipe;
 
-import com.priyanshparekh.plated.ingredient.Ingredient;
-import com.priyanshparekh.plated.ingredient.dto.IngredientDto;
 import com.priyanshparekh.plated.recipe.dto.AddRecipeRequest;
 import com.priyanshparekh.plated.recipe.dto.AddRecipeResponse;
-import com.priyanshparekh.plated.recipe.dto.ViewRecipeResponse;
+import com.priyanshparekh.plated.recipe.dto.RecipeDetailResponse;
+import com.priyanshparekh.plated.recipe.dto.RecipePreparationResponse;
 import com.priyanshparekh.plated.recipe.recipeingredient.RecipeIngredient;
 import com.priyanshparekh.plated.recipe.recipeingredient.RecipeIngredientRepository;
 import com.priyanshparekh.plated.recipe.recipeingredient.dto.RecipeIngredientDto;
@@ -73,11 +72,24 @@ public class RecipeService {
         return recipeMapper.toDto(savedRecipe);
     }
 
-    public ViewRecipeResponse getRecipe(Long recipeId) {
+    public RecipeDetailResponse getRecipe(Long recipeId) {
         Recipe recipe = recipeRepository.findById(recipeId).orElse(null);
 
+        return RecipeDetailResponse.builder()
+                .recipeId(recipe.getId())
+                .name(recipe.getName())
+                .cuisine(recipe.getCuisine())
+                .category(recipe.getCategory())
+                .cookingTime(recipe.getCookingTime())
+                .servingSize(recipe.getServingSize())
+                .userName(recipe.getUser().getDisplayName())
+                .userId(recipe.getUser().getId())
+                .build();
+    }
+
+    public RecipePreparationResponse getRecipePreparationData(Long recipeId) {
         List<RecipeIngredientDto> ingredients = recipeIngredientRepository
-                .findAllByRecipeId(recipe.getId())
+                .findAllByRecipeId(recipeId)
                 .stream()
                 .map(recipeIngredient -> RecipeIngredientDto.builder()
                         .id(recipeIngredient.getId())
@@ -87,7 +99,7 @@ public class RecipeService {
                         .build())
                 .toList();
         List<StepsDto> steps = stepRepository
-                .findAllByRecipeId(recipe.getId())
+                .findAllByRecipeId(recipeId)
                 .stream()
                 .map(step -> StepsDto.builder()
                         .step(step.getStep())
@@ -95,17 +107,9 @@ public class RecipeService {
                         .build())
                 .toList();
 
-        return ViewRecipeResponse.builder()
-                .recipeId(recipe.getId())
-                .name(recipe.getName())
-                .cuisine(recipe.getCuisine())
-                .category(recipe.getCategory())
-                .cookingTime(recipe.getCookingTime())
-                .servingSize(recipe.getServingSize())
-                .steps(steps)
+        return RecipePreparationResponse.builder()
                 .ingredients(ingredients)
-                .userName(recipe.getUser().getDisplayName())
-                .userId(recipe.getUser().getId())
+                .steps(steps)
                 .build();
     }
 }

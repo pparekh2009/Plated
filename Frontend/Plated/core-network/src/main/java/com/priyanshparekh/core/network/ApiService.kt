@@ -12,7 +12,8 @@ import com.priyanshparekh.core.model.recipe.AddRecipeRequest
 import com.priyanshparekh.core.model.recipe.AddRecipeResponse
 import com.priyanshparekh.core.model.recipe.IngredientDto
 import com.priyanshparekh.core.model.recipe.RecipeItem
-import com.priyanshparekh.core.model.recipe.ViewRecipeResponse
+import com.priyanshparekh.core.model.recipe.RecipeDetailResponse
+import com.priyanshparekh.core.model.recipe.RecipePreparationResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -51,7 +52,10 @@ interface ApiService {
     suspend fun addRecipe(@Body addRecipeRequest: AddRecipeRequest): Response<AddRecipeResponse>
 
     @GET("recipes/{recipe-id}")
-    suspend fun getRecipe(@Path(value = "recipe-id") recipeId: Long): Response<ViewRecipeResponse>
+    suspend fun getRecipe(@Path(value = "recipe-id") recipeId: Long): Response<RecipeDetailResponse>
+
+    @GET("recipes/{recipe-id}/preparation-data")
+    suspend fun getRecipePreparationData(@Path(value = "recipe-id") recipeId: Long): Response<RecipePreparationResponse>
 
     @POST("users/{user-id}/save/{recipe-id}")
     suspend fun saveRecipe(@Path(value = "user-id") userId: Long, @Path(value = "recipe-id") recipeId: Long): Response<MessageResponse>

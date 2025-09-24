@@ -14,6 +14,10 @@ class RecipeRepository {
         return@withContext RetrofitInstance.api.getRecipe(recipeId)
     }
 
+    suspend fun getRecipePreparationData(recipeId: Long) = withContext(Dispatchers.IO) {
+        return@withContext RetrofitInstance.api.getRecipePreparationData(recipeId)
+    }
+
     suspend fun getSavedRecipes(userId: Long) = withContext(Dispatchers.IO) {
         return@withContext RetrofitInstance.api.getSavedRecipes(userId)
     }

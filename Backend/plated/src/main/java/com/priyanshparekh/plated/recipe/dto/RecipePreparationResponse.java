@@ -13,17 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ViewRecipeResponse {
+public class RecipePreparationResponse {
 
-    private Long recipeId;
-    private String name;
-    private String cuisine;
-    private String category;
-    private float cookingTime;
-    private int servingSize;
     private List<RecipeIngredientDto> ingredients;
     private List<StepsDto> steps;
-    private Long userId;
-    private String userName;
 
 }

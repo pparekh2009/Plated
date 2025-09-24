@@ -2,6 +2,8 @@ package com.priyanshparekh.core.navigation
 
 import android.content.Context
 import androidx.navigation.NavController
+import com.priyanshparekh.core.model.recipe.RecipeIngredientDto
+import com.priyanshparekh.core.model.recipe.StepDto
 
 interface CommonNavigator {
 
@@ -13,5 +15,9 @@ interface CommonNavigator {
 
     fun openProfileFragment(navController: NavController, userId: Long, isMyProfile: Boolean)
 
+    fun openRecipeDetailFragment(navController: NavController, recipeId: Long)
+
     fun openViewRecipeFragment(navController: NavController, recipeId: Long)
+
+    fun openCookModeFragment(navController: NavController, ingredients: List<RecipeIngredientDto>, steps: List<StepDto>)
 }

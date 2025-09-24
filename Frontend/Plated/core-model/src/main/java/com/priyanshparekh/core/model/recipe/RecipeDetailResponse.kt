@@ -1,6 +1,6 @@
 package com.priyanshparekh.core.model.recipe
 
-data class ViewRecipeResponse(
+data class RecipeDetailResponse(
     val recipeId: Long,
     val name: String,
     val cuisine: String,
